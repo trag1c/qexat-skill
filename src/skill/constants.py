@@ -16,5 +16,6 @@ issue_labels: list[str] = [
     "help wanted",
     "invalid",
     "question",
+    "test",
     "wontfix",
 ]
