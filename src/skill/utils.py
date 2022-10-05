@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 import functools
-import sys
 from collections.abc import Callable
 from typing import ParamSpec, TypeVar
 
@@ -30,11 +29,3 @@ def clean_exit(func: Callable[P, R]) -> Callable[P, R]:
             raise SystemExit(0)
 
     return inner
-
-
-def debug_mode() -> bool:
-    """
-    Return whether the debug mode is on or off.
-    """
-
-    return "--debug" in sys.argv[1:]

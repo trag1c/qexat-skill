@@ -1,19 +1,29 @@
 #!/usr/bin/env python3
 
+from dataclasses import dataclass
 import json
 import requests
 
 from pick import pick
+from result import Result, Ok, Err
 
 from skill.constants import ISSUE_FOOTER, REPO_API_URL, issue_labels
-from skill.utils import clean_exit, debug_mode
+from skill.utils import clean_exit
+
+
+@dataclass
+class Issue:
+    number: int
+    title: str
+    body: str | None = None
+    labels: list[str] = []
 
 
 def open_issue(
     title: str, body: str | None = None, labels: list[str] = []
-) -> tuple[int, str]:
+) -> Result[Issue, str]:
     """
-    Ask for GitHub credentials and use them to open an issue in the repository.
+    Ask for GitHub credentials and use them to make a request to open an issue in the repository.
 
     Args:
         title (str): the title of the issue
@@ -42,7 +52,15 @@ def open_issue(
 
     req = session.post(REPO_API_URL, json.dumps(issue))
 
-    return req.status_code, req.content.decode("utf-8")
+    match req.status_code:
+        case 201:
+            return Ok(
+                Issue(json.loads(req.content)["number"], title, body, labels)
+            )
+        case 410:
+            return Err("Issues are disabled in this repository.")
+        case _:
+            return Err("Could not create the issue.")
 
 
 @clean_exit
@@ -58,19 +76,15 @@ def main() -> None:
     picked_labels: list[tuple[str, int]] = pick(issue_labels, "Choose the labels", multiselect=True)  # type: ignore
 
     labels: list[str] = [issue_labels[index] for _, index in picked_labels]
-    code, msg = open_issue(title, body, labels)
+    result = open_issue(title, body, labels)
 
-    print()
-
-    if str(code).startswith("2"):
-        print(f"\x1b[32mIssue {title!r} was created successfully.")
+    if result.is_ok():
+        issue = result.unwrap()
+        print(
+            f"\x1b[32mIssue #{issue.number} {issue.title!r} was created successfully.\x1b[39m"
+        )
     else:
-        print("\x1b[31mError: Could not create the issue.\x1b[39m")
-        if not debug_mode():
-            print("Tip: use the flag --debug to print the detailed response.")
-
-    if debug_mode():
-        print(f"\nDetailed response:\n\t{msg}")
+        print(f"\x1b[31mError: {result.value}\x1b[39m")
 
 
 if __name__ == "__main__":
