@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 
 - Bash script at the root of the project to run it even more easily
+- `black` and `isort` as dev dependencies
 
 ### Changed
 
