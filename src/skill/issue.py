@@ -10,7 +10,12 @@ import requests
 from pick import pick
 from result import Result, Ok, Err
 
-from skill.constants import ISSUE_FOOTER, REPO_API_URL, issue_labels
+from skill.constants import (
+    ISSUE_FOOTER,
+    PRIVACY_NOTICE,
+    REPO_API_URL,
+    issue_labels,
+)
 from skill.utils import clean_exit
 
 
@@ -20,6 +25,9 @@ class Issue:
     title: str
     body: str | None = None
     labels: list[str] = field(default_factory=list)
+
+    def __repr__(self) -> str:
+        return f"Issue #{self.number} {self.title!r}"
 
 
 def open_issue(
@@ -39,9 +47,7 @@ def open_issue(
     session = requests.Session()
 
     # We ask for user's GitHub credentials so we can create an issue using them
-    print(
-        "\n\x1b[1;34mNote: no data is saved from the prompts. It is only used to make a request to GitHub.\x1b[0m\n"
-    )
+    print(PRIVACY_NOTICE)
     username = input("Enter your GitHub username: ")
     token = input("Enter your GitHub Personal Access Token: ")
 
@@ -70,9 +76,9 @@ def init() -> tuple[str | None, ...]:
     parser = ArgumentParser()
     parser.add_argument("--title", default=None)
     parser.add_argument("--body", default=None)
-    
+
     args = parser.parse_args()
-    
+
     return args.title, args.body
 
 
@@ -81,7 +87,7 @@ def main() -> None:
     """
     Main program.
     """
-    
+
     _title, _body = init()
 
     title: str = _title or input("\n\x1b[35mIssue title:\x1b[39m\n")
@@ -94,9 +100,7 @@ def main() -> None:
 
     if result.is_ok():
         issue = result.unwrap()
-        print(
-            f"\x1b[32mIssue #{issue.number} {issue.title!r} was created successfully.\x1b[39m"
-        )
+        print(f"\x1b[32m{issue} was created successfully.\x1b[39m")
     else:
         print(f"\x1b[31mError: {result.value}\x1b[39m")
 
