@@ -2,7 +2,7 @@
 
 Please include a summary of the changes and the related issue. Please also include relevant motivation and context. List any dependencies that are required for this change.
 
-Fixes # (issue)
+Fixes gh-{issue}
 
 ## Type of change
 
@@ -22,10 +22,10 @@ Please describe the tests that you ran to verify your changes. Provide instructi
 
 **Test Configuration**:
 
-- Firmware version:
-- Hardware:
-- Toolchain:
-- SDK:
+- OS:
+- Python version:
+- Poetry version:
+- Skill version:
 
 # Checklist:
 
@@ -33,6 +33,7 @@ Please describe the tests that you ran to verify your changes. Provide instructi
 - [ ] I have performed a self-review of my code
 - [ ] I have commented my code, particularly in hard-to-understand areas
 - [ ] I have made corresponding changes to the documentation
+- [ ] I have added the changes to the [changelog](/docs/CHANGELOG.md)
 - [ ] My changes generate no new warnings
 - [ ] I have added tests that prove my fix is effective or that my feature works
 - [ ] New and existing unit tests pass locally with my changes

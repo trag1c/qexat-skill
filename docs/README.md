@@ -36,3 +36,7 @@ make dotenv
 ```
 
 Then, replace the placeholders in `.env` by your username and your personal access token.
+
+## Contribute
+
+I'm fully open to contributions! Please read [CONTRIBUTING.md](/docs/CONTRIBUTING.md) and [CODE_OF_CONDUCT.md](/docs/CODE_OF_CONDUCT.md) before opening a pull request.
