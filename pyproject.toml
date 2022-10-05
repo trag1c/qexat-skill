@@ -1,10 +1,11 @@
 [tool.poetry]
 name = "skill"
 version = "1.0.0"
-description = "This repository is to centralize in a place all my skill issues. Thanks."
+description = "Allows creating skill issues. Literally."
 authors = ["Qexat <contact@qexat.com>"]
 license = "MIT"
 readme = "docs/README.md"
+repository = "https://github.com/qexat/skill"
 
 [tool.poetry.dependencies]
 python = "^3.10"
