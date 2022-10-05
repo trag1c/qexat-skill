@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 import json
 import requests
 
@@ -16,7 +16,7 @@ class Issue:
     number: int
     title: str
     body: str | None = None
-    labels: list[str] = []
+    labels: list[str] = field(default_factory=list)
 
 
 def open_issue(
