@@ -1,39 +1,10 @@
 #!/usr/bin/env python3
 
-import functools
 import json
-import sys
 import requests
-from collections.abc import Callable
-from typing import ParamSpec, TypeVar
 
 from skill.constants import ISSUE_FOOTER, REPO_API_URL
-
-P = ParamSpec("P")
-R = TypeVar("R")
-
-
-def clean_exit(func: Callable[P, R]) -> Callable[P, R]:
-    """
-    Clean the exit of a function in case of ^C by printing
-    a simple message rather than a full error traceback.
-
-    Args:
-        func (Callable[P, R]): the function to wrap.
-
-    Returns:
-        Callable[P, R]: the wrapped function.
-    """
-
-    @functools.wraps(func)
-    def inner(*args: P.args, **kwargs: P.kwargs) -> R:
-        try:
-            return func(*args, **kwargs)
-        except KeyboardInterrupt:
-            print("\n\x1b[31mAborted. Exiting...\x1b[39m")
-            raise SystemExit(0)
-
-    return inner
+from skill.utils import clean_exit, debug_mode
 
 
 def open_issue(title: str, body: str | None = None) -> tuple[int, str]:
@@ -69,14 +40,6 @@ def open_issue(title: str, body: str | None = None) -> tuple[int, str]:
     return req.status_code, req.content.decode("utf-8")
 
 
-def debug_mode() -> bool:
-    """
-    Return whether the debug mode is on or off.
-    """
-
-    return "--debug" in sys.argv[1:]
-
-
 @clean_exit
 def main() -> None:
     """
@@ -84,9 +47,10 @@ def main() -> None:
     """
 
     title: str = input("\n\x1b[35mIssue title:\x1b[39m\n")
-    body: str = input(
-        "\n\x1b[35mType the issue body (optional):\x1b[39m\n"
-    ) + ISSUE_FOOTER
+    body: str = (
+        input("\n\x1b[35mType the issue body (optional):\x1b[39m\n")
+        + ISSUE_FOOTER
+    )
 
     code, msg = open_issue(title, body)
 
