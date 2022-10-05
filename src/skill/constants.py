@@ -2,8 +2,17 @@
 Skill constants.
 """
 
+import dotenv
+import os
+
+dotenv.load_dotenv()  # type: ignore
+
+ACCESS_TOKEN = os.environ.get("ACCESS_TOKEN", default=None)
+GITHUB_USERNAME = os.environ.get("GITHUB_USERNAME", default=None)
 REPO_API_URL = "https://api.github.com/repos/qexat/skill/issues"
 ISSUE_FOOTER = "\n\n---\n<sup>Issue created with Skill issue CLI</sup>\n"
+
+PRIVACY_NOTICE = "\n\x1b[1;34mNote: no data is saved from the prompts. It is only used to make a request to GitHub.\x1b[0m\n"
 
 issue_labels: list[str] = [
     "bug",
@@ -14,5 +23,6 @@ issue_labels: list[str] = [
     "help wanted",
     "invalid",
     "question",
+    "test",
     "wontfix",
 ]
