@@ -23,5 +23,5 @@ poetry install
 ### Create an issue
 
 ```
-poetry run issue
+poetry run create-issue
 ```
