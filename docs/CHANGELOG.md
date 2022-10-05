@@ -11,12 +11,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 - This present changelog
 - Issue title and body can be passed through the command line
-- A `.env` file can be used to store locally GitHub user's Personal Access Token
+- A `.env` file can be used to store locally GitHub username and Personal Access Token
 - Test label for test issues
 
 ### Changed
 
 - Static printed messages are now stored in `constants.py`
+
+### Fixed
+
+- Not having a `.env` file used to crash the program
 
 ## [1.0.0]
 
