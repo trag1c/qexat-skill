@@ -15,3 +15,5 @@ make setup
 ```
 poetry run create-issue
 ```
+
+This creates an issue on this repository.

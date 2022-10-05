@@ -23,7 +23,7 @@ def open_issue(title: str, body: str | None = None) -> tuple[int, str]:
 
     # We ask for user's GitHub credentials so we can create an issue using them
     print(
-        "\x1b[1;34mNote: no data is saved from the prompts. It is only used to make a request to GitHub.\x1b[0m\n"
+        "\n\x1b[1;34mNote: no data is saved from the prompts. It is only used to make a request to GitHub.\x1b[0m\n"
     )
     username = input("Enter your GitHub username: ")
     token = input("Enter your GitHub Personal Access Token: ")
