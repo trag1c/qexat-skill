@@ -6,18 +6,8 @@ A place to create skill issues. Literally.
 
 This tutorial assumes that you have `poetry` installed.
 
----
-
-First, create a virtual environment and activate it:
-
 ```
-poetry shell
-```
-
-Then, you need to install the dependencies:
-
-```
-poetry install
+make setup
 ```
 
 ### Create an issue

@@ -87,8 +87,8 @@ def main() -> None:
     Main program.
     """
 
-    title: str = input("\x1b[35mIssue title:\x1b[39m\n")
-    opt_body: str = input("\x1b[35mType the issue body (optional):\x1b[39m\n")
+    title: str = input("\n\x1b[35mIssue title:\x1b[39m\n")
+    opt_body: str = input("\n\x1b[35mType the issue body (optional):\x1b[39m\n")
     # If the body is empty, we set it to None
     body = opt_body or None
 
