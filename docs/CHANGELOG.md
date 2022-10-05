@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 
 - README correcty specifies that `.env` can be also used for username
+- Makefile targets are now phony
 
 ### Removed
 

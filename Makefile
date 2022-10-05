@@ -1,3 +1,5 @@
+all: setup
+
 setup:
 	poetry shell
 	poetry update
@@ -5,3 +7,5 @@ setup:
 
 dotenv:
 	cp templates/.env .env
+
+.PHONY: all setup dotenv
