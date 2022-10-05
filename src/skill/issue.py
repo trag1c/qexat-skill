@@ -2,19 +2,15 @@
 
 import functools
 import json
-import os
 import sys
 import requests
 from collections.abc import Callable
-from dotenv.main import load_dotenv  # type: ignore
 from typing import ParamSpec, TypeVar
+
+from skill.constants import REPO_API_URL
 
 P = ParamSpec("P")
 R = TypeVar("R")
-
-_ = load_dotenv()
-
-REPO_API_URL = os.environ["REPO_API_URL"]
 
 
 def clean_exit(func: Callable[P, R]) -> Callable[P, R]:
@@ -88,7 +84,9 @@ def main() -> None:
     """
 
     title: str = input("\n\x1b[35mIssue title:\x1b[39m\n")
-    opt_body: str = input("\n\x1b[35mType the issue body (optional):\x1b[39m\n")
+    opt_body: str = input(
+        "\n\x1b[35mType the issue body (optional):\x1b[39m\n"
+    )
     # If the body is empty, we set it to None
     body = opt_body or None
 
