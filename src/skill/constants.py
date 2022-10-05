@@ -2,6 +2,12 @@
 Skill constants.
 """
 
+import dotenv
+import os
+
+dotenv.load_dotenv()  # type: ignore
+
+ACCESS_TOKEN = os.environ["ACCESS_TOKEN"] or None
 REPO_API_URL = "https://api.github.com/repos/qexat/skill/issues"
 ISSUE_FOOTER = "\n\n---\n<sup>Issue created with Skill issue CLI</sup>\n"
 

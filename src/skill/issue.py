@@ -11,6 +11,7 @@ from pick import pick
 from result import Result, Ok, Err
 
 from skill.constants import (
+    ACCESS_TOKEN,
     ISSUE_FOOTER,
     PRIVACY_NOTICE,
     REPO_API_URL,
@@ -49,7 +50,7 @@ def open_issue(
     # We ask for user's GitHub credentials so we can create an issue using them
     print(PRIVACY_NOTICE)
     username = input("Enter your GitHub username: ")
-    token = input("Enter your GitHub Personal Access Token: ")
+    token = ACCESS_TOKEN or input("Enter your GitHub Personal Access Token: ")
 
     session.auth = (username, token)
 
