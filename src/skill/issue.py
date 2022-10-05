@@ -12,6 +12,7 @@ from result import Err, Ok, Result
 
 from skill.constants import (
     ACCESS_TOKEN,
+    DAHLIA,
     GITHUB_USERNAME,
     ISSUE_FOOTER,
     PRIVACY_NOTICE,
@@ -91,8 +92,8 @@ def main() -> None:
 
     _title, _body = init()
 
-    title: str = _title or input("\n\x1b[35mIssue title:\x1b[39m\n")
-    body: str = _body or input("\n\x1b[35mIssue body (optional):\x1b[39m\n")
+    title: str = _title or DAHLIA.input("\n&5Issue title:\n")
+    body: str = _body or DAHLIA.input("\n&5Issue body (optional):\n")
     body += ISSUE_FOOTER
     picked_labels: list[tuple[str, int]] = pick(issue_labels, "Choose the labels", multiselect=True)  # type: ignore
 
@@ -101,9 +102,9 @@ def main() -> None:
 
     if result.is_ok():
         issue = result.unwrap()
-        print(f"\x1b[32m{issue} was created successfully.\x1b[39m")
+        DAHLIA.print(f"&2{issue} was created successfully.")
     else:
-        print(f"\x1b[31mError: {result.value}\x1b[39m")
+        DAHLIA.print(f"&4Error: {result.value}")
 
 
 if __name__ == "__main__":
