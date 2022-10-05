@@ -27,20 +27,12 @@ poetry run create-issue --title Title --body "Body of my issue"
 
 ## Shortcuts
 
-### Token
+### GitHub credentials
 
-If you don't want to manually type your token every time, you can run:
+If you don't want to manually type your GitHub credentials every time, you can run:
 
 ```sh
 make dotenv
 ```
 
-Then, replace the placeholder in `.env` by your personal access token.
-
-### Run
-
-```sh
-make create-issue
-```
-
-This installs the dependencies and runs the program ; however, this does not support inline issue arguments.
+Then, replace the placeholders in `.env` by your username and your personal access token.

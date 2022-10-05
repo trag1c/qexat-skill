@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [Unreleased]
+
+### Changed
+
+- README correcty specifies that `.env` can be also used for username
+
+### Removed
+
+- The ability to run the program using `make`
+
 ## [1.1.0]
 
 ### Added
