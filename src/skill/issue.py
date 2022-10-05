@@ -7,7 +7,7 @@ import requests
 from collections.abc import Callable
 from typing import ParamSpec, TypeVar
 
-from skill.constants import REPO_API_URL
+from skill.constants import ISSUE_FOOTER, REPO_API_URL
 
 P = ParamSpec("P")
 R = TypeVar("R")
@@ -84,11 +84,9 @@ def main() -> None:
     """
 
     title: str = input("\n\x1b[35mIssue title:\x1b[39m\n")
-    opt_body: str = input(
+    body: str = input(
         "\n\x1b[35mType the issue body (optional):\x1b[39m\n"
-    )
-    # If the body is empty, we set it to None
-    body = opt_body or None
+    ) + ISSUE_FOOTER
 
     code, msg = open_issue(title, body)
 
