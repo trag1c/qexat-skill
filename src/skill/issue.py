@@ -5,7 +5,7 @@ import json
 import sys
 import requests
 from collections.abc import Callable
-from typing import Optional, ParamSpec, TypeVar
+from typing import ParamSpec, TypeVar
 
 P = ParamSpec("P")
 R = TypeVar("R")
@@ -38,7 +38,7 @@ def clean_exit(func: Callable[P, R]) -> Callable[P, R]:
     return inner
 
 
-def open_issue(title: str, body: Optional[str] = None) -> tuple[int, str]:
+def open_issue(title: str, body: str | None = None) -> tuple[int, str]:
     """
     Ask for GitHub credentials and use them to open an issue in the repository.
 
