@@ -2,17 +2,19 @@
 
 import functools
 import json
+import os
 import sys
 import requests
 from collections.abc import Callable
+from dotenv.main import load_dotenv  # type: ignore
 from typing import ParamSpec, TypeVar
 
 P = ParamSpec("P")
 R = TypeVar("R")
 
-REPO_OWNER = "qexat"
-REPO_NAME = "skill"
-REPO_API_URL = f"https://api.github.com/repos/{REPO_OWNER}/{REPO_NAME}/issues"
+_ = load_dotenv()
+
+REPO_API_URL = os.environ["REPO_API_URL"]
 
 
 def clean_exit(func: Callable[P, R]) -> Callable[P, R]:
