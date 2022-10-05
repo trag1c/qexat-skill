@@ -40,3 +40,7 @@ Then, replace the placeholders in `.env` by your username and your personal acce
 ## Contribute
 
 I'm fully open to contributions! Please read [CONTRIBUTING.md](/docs/CONTRIBUTING.md) and [CODE_OF_CONDUCT.md](/docs/CODE_OF_CONDUCT.md) before opening a pull request.
+
+## Roadmap
+
+The roadmap of the project can be found [here](https://github.com/users/qexat/projects/1).

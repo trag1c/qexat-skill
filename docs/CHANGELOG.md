@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Bash script at the root of the project to run it even more easily
 - `black` and `isort` as dev dependencies
 - `dahlia` as a dependency
+- Link to roadmap in README
 
 ### Changed
 
