@@ -4,6 +4,8 @@ import functools
 from collections.abc import Callable
 from typing import ParamSpec, TypeVar
 
+from skill.constants import DAHLIA
+
 P = ParamSpec("P")
 R = TypeVar("R")
 
@@ -25,7 +27,7 @@ def clean_exit(func: Callable[P, R]) -> Callable[P, R]:
         try:
             return func(*args, **kwargs)
         except KeyboardInterrupt:
-            print("\n\x1b[31mAborted. Exiting...\x1b[39m")
+            DAHLIA.print("\n&4Aborted. Exiting...")
             raise SystemExit(0)
 
     return inner
