@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Added
+
+- Bash script at the root of the project to run it even more easily
+
 ### Changed
 
 - README correcty specifies that `.env` can be also used for username
