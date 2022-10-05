@@ -2,13 +2,13 @@
 
 # pyright: reportUnusedCallResult=false
 
+import json
 from argparse import ArgumentParser
 from dataclasses import dataclass, field
-import json
-import requests
 
+import requests
 from pick import pick
-from result import Result, Ok, Err
+from result import Err, Ok, Result
 
 from skill.constants import (
     ACCESS_TOKEN,
