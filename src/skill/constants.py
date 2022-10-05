@@ -2,11 +2,13 @@
 Skill constants.
 """
 
+# pyright: reportUnusedCallResult=false, reportUnknownVariableType=false
+
 import os
 
-import dotenv
+from dotenv import load_dotenv
 
-dotenv.load_dotenv()  # type: ignore
+load_dotenv()
 
 ACCESS_TOKEN = os.environ.get("ACCESS_TOKEN", default=None)
 GITHUB_USERNAME = os.environ.get("GITHUB_USERNAME", default=None)
