@@ -17,6 +17,9 @@ python-dotenv = "^0.21.0"
 [tool.poetry.scripts]
 create-issue = "skill.issue:main"
 
+[tool.poetry.group.dev.dependencies]
+black = "^22.8.0"
+isort = "^5.10.1"
 
 [build-system]
 requires = ["poetry-core"]

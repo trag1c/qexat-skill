@@ -2,8 +2,9 @@
 Skill constants.
 """
 
-import dotenv
 import os
+
+import dotenv
 
 dotenv.load_dotenv()  # type: ignore
 
