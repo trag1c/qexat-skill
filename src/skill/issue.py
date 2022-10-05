@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 
+# pyright: reportUnusedCallResult=false
+
+from argparse import ArgumentParser
 from dataclasses import dataclass, field
 import json
 import requests
@@ -63,16 +66,27 @@ def open_issue(
             return Err("Could not create the issue.")
 
 
+def init() -> tuple[str | None, ...]:
+    parser = ArgumentParser()
+    parser.add_argument("--title", default=None)
+    parser.add_argument("--body", default=None)
+    
+    args = parser.parse_args()
+    
+    return args.title, args.body
+
+
 @clean_exit
 def main() -> None:
     """
     Main program.
     """
+    
+    _title, _body = init()
 
-    title: str = input("\n\x1b[35mIssue title:\x1b[39m\n")
-    body: str = (
-        input("\n\x1b[35mIssue body (optional):\x1b[39m\n") + ISSUE_FOOTER
-    )
+    title: str = _title or input("\n\x1b[35mIssue title:\x1b[39m\n")
+    body: str = _body or input("\n\x1b[35mIssue body (optional):\x1b[39m\n")
+    body += ISSUE_FOOTER
     picked_labels: list[tuple[str, int]] = pick(issue_labels, "Choose the labels", multiselect=True)  # type: ignore
 
     labels: list[str] = [issue_labels[index] for _, index in picked_labels]
