@@ -11,11 +11,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 - Bash script at the root of the project to run it even more easily
 - `black` and `isort` as dev dependencies
+- `dahlia` as a dependency
 
 ### Changed
 
 - README correcty specifies that `.env` can be also used for username
 - Makefile targets are now phony
+- Replaced raw ANSI codes with Dahlia
 
 ### Removed
 
