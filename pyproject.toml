@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "skill"
+version = "1.0.0"
+description = "This repository is to centralize in a place all my skill issues. Thanks."
+authors = ["Qexat <contact@qexat.com>"]
+license = "MIT"
+readme = "docs/README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+requests = "^2.28.1"
+
+[tool.poetry.scripts]
+issue = "skill.issue:main"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
