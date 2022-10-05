@@ -11,7 +11,7 @@ python = "^3.10"
 requests = "^2.28.1"
 
 [tool.poetry.scripts]
-issue = "skill.issue:main"
+create-issue = "skill.issue:main"
 
 
 [build-system]
