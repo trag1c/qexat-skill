@@ -65,9 +65,8 @@ def open_issue(
 
     match req.status_code:
         case 201:
-            return Ok(
-                Issue(json.loads(req.content)["number"], title, body, labels)
-            )
+            number = json.loads(req.content)["number"]
+            return Ok(Issue(number, title, body, labels))
         case 410:
             return Err("Issues are disabled in this repository.")
         case _:
