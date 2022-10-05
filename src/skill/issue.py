@@ -3,11 +3,15 @@
 import json
 import requests
 
-from skill.constants import ISSUE_FOOTER, REPO_API_URL
+from pick import pick
+
+from skill.constants import ISSUE_FOOTER, REPO_API_URL, issue_labels
 from skill.utils import clean_exit, debug_mode
 
 
-def open_issue(title: str, body: str | None = None) -> tuple[int, str]:
+def open_issue(
+    title: str, body: str | None = None, labels: list[str] = []
+) -> tuple[int, str]:
     """
     Ask for GitHub credentials and use them to open an issue in the repository.
 
@@ -33,6 +37,7 @@ def open_issue(title: str, body: str | None = None) -> tuple[int, str]:
     issue = {
         "title": title,
         "body": body,
+        "labels": labels,
     }
 
     req = session.post(REPO_API_URL, json.dumps(issue))
@@ -48,11 +53,12 @@ def main() -> None:
 
     title: str = input("\n\x1b[35mIssue title:\x1b[39m\n")
     body: str = (
-        input("\n\x1b[35mType the issue body (optional):\x1b[39m\n")
-        + ISSUE_FOOTER
+        input("\n\x1b[35mIssue body (optional):\x1b[39m\n") + ISSUE_FOOTER
     )
+    picked_labels: list[tuple[str, int]] = pick(issue_labels, "Choose the labels", multiselect=True)  # type: ignore
 
-    code, msg = open_issue(title, body)
+    labels: list[str] = [issue_labels[index] for _, index in picked_labels]
+    code, msg = open_issue(title, body, labels)
 
     print()
 
