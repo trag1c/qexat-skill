@@ -43,4 +43,4 @@ Then, replace the placeholder in `.env` by your personal access token.
 make create-issue
 ```
 
-This installs the dependencies and runs the program.
+This installs the dependencies and runs the program ; however, this does not support inline issue arguments.
