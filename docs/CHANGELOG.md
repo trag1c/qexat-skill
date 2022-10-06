@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - `black` and `isort` as dev dependencies
 - `dahlia` as a dependency
 - Link to roadmap in README
+- Poetry lockfile
 
 ### Changed
 
