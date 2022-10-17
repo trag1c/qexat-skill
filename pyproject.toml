@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "skill"
-version = "1.0.0"
+version = "1.1.0"
 description = "Allows creating skill issues. Literally."
 authors = ["Qexat <contact@qexat.com>"]
 license = "MIT"
