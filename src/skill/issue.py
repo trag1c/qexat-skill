@@ -93,8 +93,7 @@ def main() -> None:
     _title, _body = init()
 
     title: str = _title or DAHLIA.input("\n&5Issue title:\n")
-    body: str = _body or DAHLIA.input("\n&5Issue body (optional):\n")
-    body += ISSUE_FOOTER
+    body: str = _body or DAHLIA.input("\n&5Issue body (optional):\n") + ISSUE_FOOTER
     picked_labels: list[tuple[str, int]] = pick(issue_labels, "Choose the labels", multiselect=True)  # type: ignore
 
     labels: list[str] = [issue_labels[index] for _, index in picked_labels]
